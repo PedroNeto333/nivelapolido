@@ -403,10 +403,8 @@
         : document;
     }
 
-    // NOVA FUNÇÃO: Atalhos de Teclado
-    // Função de teclado modificada
+    // Função de teclado 
     function configurarTeclado(doc) {
-      // Verifica se o 'doc' é o documento da página principal
       // Se for a janela flutuante, não adiciona o ouvinte de teclado
       if (doc !== document) return;
 
@@ -562,20 +560,13 @@
       const ctx = getCtx();
 
       // VERIFICAÇÃO: Se não estiver no modo PiP, mostra o overlay
-      // Se estiver no PiP (window.documentPictureInPicture.window existe), pula o visual
       const estaNoPiP = window.documentPictureInPicture && window.documentPictureInPicture.window;
 
       if (!estaNoPiP) {
         ctx.getElementById("blur-overlay").style.display = "block";
         ctx.getElementById("overlayConteudo").style.display = "block";
       } else {
-        // No PiP, apenas avisamos visualmente de forma discreta ou deixamos o cronômetro rodar a pausa
         console.log("Erro registrado no PiP: Pausa de correção ativa (sem overlay).");
-
-        // Opcional: Você pode fechar a pausa automaticamente no próximo acerto ou 
-        // criar um botão menor. Mas como você pediu para NÃO aparecer, 
-        // vamos apenas manter o estado de 'pausadoParaResolucao' ativo.
-        // Se quiser que o PiP NUNCA pause o tempo, mude para: pausadoParaResolucao = false;
       }
     }
 
